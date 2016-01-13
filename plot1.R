@@ -1,0 +1,6 @@
+library(sqldf)
+cl <- c("character","character", "numeric","numeric","numeric","numeric","numeric","numeric","numeric")
+hpcdata <- read.csv.sql("household_power_consumption.txt", sql = "select * from file where Date in ('1/2/2007','2/2/2007')", sep = ";", header = TRUE, colClasses = cl)
+png(filename = "plot1.png")
+hist(hpcdata$Global_active_power, main = "Global Active Power" ,xlab = "Global Active Power (kilowatts)", col = "red")
+dev.off()
